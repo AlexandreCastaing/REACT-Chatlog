@@ -4,110 +4,11 @@ import { pressChatlog } from "@redux/chatlogs/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Chatlog from '@components/Chatlog';
+import API from '@lib/API';
 
-const Chatlogs = (props) => {
+ const Chatlogs =  (props) => {
     const { pressChatlog, chatlogs, user, navigation } = props;
     const [displayAdd, setDisplayAdd] = useState(false);
-
-    const _pressChatlog = (item) => {
-      pressChatlog(item);
-    }
-
-    const smileys = [
-        {
-            id: 1,
-            chatlog: 5,
-            title: "Parfait",
-            label: ":D"
-        },
-        {
-            id: 2,
-            chatlog: 3,
-            title: "Normal",
-            label: ":|"
-        },
-        {
-            id: 3,
-            chatlog: 1,
-            title: "Mauvais",
-            label: ":("
-        },
-        {
-            id: 4,
-            chatlog: 4,
-            title: "Bon",
-            label: ":)"
-        },
-        {
-            id: 5,
-            chatlog: 2,
-            title: "Passable",
-            label: ":/"
-        },
-    ];
-
-    const chatlogJson = [
-      {
-        "idChatlog": "4",
-        "idUser": "444",
-        "isVisible": "false",
-        "name": "test",
-        "description": "chatlog",
-        "color": "#5599dd",
-        "effect": "",
-        "font": "",
-        "icon": "",
-        "colorMessages": "#dddddd",
-        "effectMessages": "",
-        "fontMessages": "",
-        "hasPassword": "false"
-      },
-      {
-        "idChatlog": "1",
-        "idUser": "123456",
-        "isVisible": "false",
-        "name": "test",
-        "description": "chatlog",
-        "color": "#dddddd",
-        "effect": "",
-        "font": "",
-        "icon": "",
-        "colorMessages": "#dddddd",
-        "effectMessages": "",
-        "fontMessages": "",
-        "hasPassword": "false"
-      },
-      {
-        "idChatlog": "5",
-        "idUser": "123456",
-        "isVisible": "false",
-        "name": "CHATLOG JEAN PIEERRE",
-        "description": "ety415",
-        "color": "#880000",
-        "effect": "",
-        "font": "",
-        "icon": "",
-        "colorMessages": "#dddddd",
-        "effectMessages": "",
-        "fontMessages": "",
-        "hasPassword": "false"
-      },
-      {
-        "idChatlog": "5",
-        "idUser": "123456",
-        "isVisible": "false",
-        "name": "Jacklapin",
-        "description": "descriptioiorhi",
-        "color": "#557599",
-        "effect": "",
-        "font": "",
-        "icon": "",
-        "colorMessages": "#dddddd",
-        "effectMessages": "",
-        "fontMessages": "",
-        "hasPassword": "false"
-      }
-    ];
 
     if (!user.loggedIn) {
       return (
@@ -117,22 +18,37 @@ const Chatlogs = (props) => {
       );
     }
 
-    return (
-      <View style={styles.wrapper}>
-        <ScrollView
-          horizontal={false}
-          
-          style={styles.chatlogs}
-        >
-          {chatlogJson.map((item) => (
-              <View>
-                  <Chatlog chatlog={item} navigation={navigation} key={item.idChatlog.toString()}/>
-              </View>
-          ))}
-      </ScrollView>
+    let viewReturn = null
+    viewReturn = API("Chatlogs", "GET", {}, (async (chatlogsJson)=>{
       
-    </View>
-  );
+        if(chatlogsJson.lenght > 0)
+          return (
+            <View style={styles.wrapper}>
+              <ScrollView horizontal={false} style={styles.chatlogs}>
+                {chatlogsJson.map((chatlog) => (
+                    <View>
+                        <Chatlog chatlog={chatlog} navigation={navigation} key={item.idChatlog.toString()}/>
+                    </View>
+                ))}
+              </ScrollView>
+            
+            </View>
+          )
+        else 
+        return (
+            <View style={styles.wrapper}>
+              <ScrollView horizontal={false} style={styles.chatlogs}>
+                  <View>
+                      <Text>No Chatlog.</Text>
+                  </View>
+              </ScrollView>
+            
+            </View>
+          )
+    }))
+    console.log(viewReturn)
+    return viewReturn;
+   
 }
 
 const styles = StyleSheet.create({

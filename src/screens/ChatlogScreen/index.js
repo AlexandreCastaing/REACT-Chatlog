@@ -2,15 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const ChatlogScreen = (props) => {
-  const { chatlog, user } = props;
-  
+  const { route } = props;
+  const { chatlog } = route.params;
 
   return (
-    
+
     <View style={styles.container}>
       <Text>Chatlog VIEW !!!</Text>
-      <Text> TEST -- == {chatlog}</Text>
-      <Text> TEST -- == {user}</Text>
+      <Text> TEST -- == {chatlog.name}</Text>
 
     </View>
   );

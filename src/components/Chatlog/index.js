@@ -12,10 +12,10 @@ const Chatlog = (props) => {
 
   const pressChatlog = () => {
       console.log(chatlog)
-      navigation.navigate(ChatlogScreen);
-      return (
+      navigation.navigate("ChatlogScreen", { chatlog: chatlog });
+      /*return (
         <ChatlogScreen chatlog={chatlog} user={user}/>
-      );     
+      ); */
   }
 
   return (
