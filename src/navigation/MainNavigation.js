@@ -7,6 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Chatlogs from "@screens/Chatlogs";
+import ChatlogScreen from "@screens/ChatlogScreen";
 import ChatlogCreate from "@screens/ChatlogCreate";
 import Profile from "@screens/Profile";
 
@@ -30,12 +31,21 @@ const TabsNavigation = () => (
       flexDirection: "row",
     }}
   >
-    <Tabs.Screen 
+    <Tabs.Screen
       name="Main"
-      component={Chatlogs}    
+      component={Chatlogs}
       listeners={({ navigation }) => ({
         tabPress: () => {
           navigation.navigate("Main");
+        },
+      })}
+    />
+    <Tabs.Screen
+      name="ChatlogScreen"
+      component={ChatlogScreen}
+      listeners={({ navigation }) => ({
+        tabPress: () => {
+          navigation.navigate("ChatlogScreen");
         },
       })}
     />

@@ -3,22 +3,24 @@ import store from "@redux";
 
 export function pressChatlog(item) {
   const currentStore = store.getState();
+  const { chatlogs } = currentStore.chatlogs;
 
-  //const { chatlogs } = currentStore.chatlogs;
-  //console.log(item)
-  //this.props.navigation.navigate("Chatlogs")  
+  const newChatlogs = [
+    ...chatlogs,
+    item
+  ];
 
   return async function (dispatch) {
-    dispatch(openChatlog(item));
+    dispatch(setChatlogs(newChatlogs));
   }
 }
 
-export function openChatlog(chatlog) {
+export function setChatlogs(chatlogs) {
   // On passe les infos au reducer, via le dispatcher.
   return async function (dispatch) {
     dispatch({
-      type: chatlogsActions.OPEN_CHATLOG,
-      chatlog: chatlog,
+      type: chatlogsActions.SET_CHATLOGS,
+      chatlogs: chatlogs,
     })
   };
 }

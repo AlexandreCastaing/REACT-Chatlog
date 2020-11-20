@@ -1,14 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Chatlog = (props) => {
-  const { chatlog, user, navigation } = props;
+const ChatlogScreen = (props) => {
+  const { chatlog, user } = props;
   
+
   return (
+    
     <View style={styles.container}>
       <Text>Chatlog VIEW !!!</Text>
+      <Text> TEST -- == {chatlog}</Text>
+      <Text> TEST -- == {user}</Text>
+
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Chatlog;
+export default ChatlogScreen;

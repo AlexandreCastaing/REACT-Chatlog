@@ -1,7 +1,8 @@
 import userActions from "./constants";
 
 const initialState = {
-  name: "Jackrabbit",
+  name: "Jordan",
+  loggedIn: false,
 };
 
 export default function userReducer(state = initialState, action) {

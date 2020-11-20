@@ -1,5 +1,5 @@
 const chatlogsActions = {
-  OPEN_CHATLOG: "OPEN_CHATLOG",
+  SET_CHATLOGS: "SET_CHATLOGS",
 };
 
 export default chatlogsActions;

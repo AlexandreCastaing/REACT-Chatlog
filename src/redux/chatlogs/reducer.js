@@ -1,5 +1,4 @@
 import chatlogsActions from "./constants";
-import Chatlog from "@screens/Chatlog";
 
 const initialState = {
   chatlogs: [
@@ -13,10 +12,10 @@ const initialState = {
 
 export default function chatlogsReducer(state = initialState, action) {
   switch (action.type) {
-    case chatlogsActions.OPEN_CHATLOG:
+    case chatlogsActions.SET_CHATLOGS:
       return {
         ...state,
-        chatlog: action.chatlog,
+        chatlogs: action.chatlogs,
       };
     default:
       return state;

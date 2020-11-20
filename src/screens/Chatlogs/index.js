@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { pressChatlog } from "@redux/chatlogs/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { createStackNavigator } from "@react-navigation/stack";
 import Chatlog from '@components/Chatlog';
-import ChatlogsNavigation from '@navigation/ChatlogsNavigation';
 
 const Chatlogs = (props) => {
-    const { pressChatlog, chatlogs, chatlog, user, navigation } = props;
+    const { pressChatlog, chatlogs, user, navigation } = props;
     const [displayAdd, setDisplayAdd] = useState(false);
 
     const _pressChatlog = (item) => {
-
-        let props = ( <ChatlogsNavigation {...props} chatlog={item}/> ).props
-        let chatlog = props.chatlog;
-        
-        console.log(chatlog) 
-        console.log()
+      pressChatlog(item);
     }
-    
 
     const smileys = [
         {
@@ -57,7 +49,7 @@ const Chatlogs = (props) => {
     const chatlogJson = [
       {
         "idChatlog": "4",
-        "idUser": "1000",
+        "idUser": "444",
         "isVisible": "false",
         "name": "test",
         "description": "chatlog",
@@ -101,27 +93,12 @@ const Chatlogs = (props) => {
         "hasPassword": "false"
       },
       {
-        "idChatlog": "44",
+        "idChatlog": "5",
         "idUser": "123456",
         "isVisible": "false",
         "name": "Jacklapin",
         "description": "descriptioiorhi",
         "color": "#557599",
-        "effect": "",
-        "font": "",
-        "icon": "",
-        "colorMessages": "#dddddd",
-        "effectMessages": "",
-        "fontMessages": "",
-        "hasPassword": "false"
-      },
-      {
-        "idChatlog": "94",
-        "idUser": "1000",
-        "isVisible": "false",
-        "name": "TEESTTEST",
-        "description": "BONJOUR",
-        "color": "#ff88ff",
         "effect": "",
         "font": "",
         "icon": "",
@@ -141,30 +118,21 @@ const Chatlogs = (props) => {
     }
 
     return (
-        <View style={styles.wrapper}>
-          <ScrollView
-            horizontal={false}
-            
-            style={styles.chatlogs}
-          >
-            {chatlogJson.map((item) => (
-                <View>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => _pressChatlog(item)}
-                  >
-                    <Chatlog
-                        onClick={() => _pressChatlog(item)}
-                        chatlog={item}
-                        key={item.idChatlog.toString()}
-                    />
-                  </TouchableOpacity>
-                </View>
-            ))}
-        </ScrollView>
-        
-      </View>
-    );
+      <View style={styles.wrapper}>
+        <ScrollView
+          horizontal={false}
+          
+          style={styles.chatlogs}
+        >
+          {chatlogJson.map((item) => (
+              <View>
+                  <Chatlog chatlog={item} navigation={navigation} key={item.idChatlog.toString()}/>
+              </View>
+          ))}
+      </ScrollView>
+      
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -198,22 +166,17 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = (state) => ({
+  chatlogs: state.chatlogs.chatlogs,
+  user: state.user,
+});
 
-const mapStateToProps = (state) => { // send props
-  return ({
-    chatlog: state.chatlog,
-    chatlogs: state.chatlogs.chatlogs,
-    user: state.user,
-  })
-};
-
-const mapDispatchToProps = (dispatch) =>{
-  return bindActionCreators(
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
     {
       pressChatlog,
     },
     dispatch
   );
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chatlogs);
