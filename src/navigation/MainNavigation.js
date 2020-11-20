@@ -18,10 +18,10 @@ const Drawer = createDrawerNavigator();
 
 const TabsNavigation = () => (
   <Tabs.Navigator
-    initialRouteName="Main"
+    initialRouteName="ChatlogsList"
     tabBarOptions={{
       activeBackgroundColor: "#fff",
-      inactiveBackgroundColor: "#fff",
+      inactiveBackgroundColor: "#ddd",
       showLabel: true,
       showIcon: true,
       activeTintColor: "green",
@@ -32,11 +32,11 @@ const TabsNavigation = () => (
     }}
   >
     <Tabs.Screen
-      name="Main"
+      name="ChatlogsList"
       component={Chatlogs}
       listeners={({ navigation }) => ({
         tabPress: () => {
-          navigation.navigate("Main");
+          navigation.navigate("ChatlogsList");
         },
       })}
     />

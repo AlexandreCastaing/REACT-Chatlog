@@ -6,22 +6,20 @@ import ChatlogScreen from '@screens/ChatlogScreen';
 const Chatlog = (props) => {
   const { chatlog, navigation, user } = props;
 
-  const bkgColors = chatlog.color;
-  const name = chatlog.name;
-  const desc = chatlog.description;
+  if(chatlog==undefined)return (<Text>...</Text>)
+  
+  let bkgColors = chatlog.color; if(!bkgColors) bkgColors = "#777"
+  let name = chatlog.name; if(!name) name = "???"
+  let desc = chatlog.description; if(!desc) desc = "???"
 
   const pressChatlog = () => {
-      console.log(chatlog)
       navigation.navigate("ChatlogScreen", { chatlog: chatlog });
-      /*return (
-        <ChatlogScreen chatlog={chatlog} user={user}/>
-      ); */
   }
 
   return (
     <TouchableOpacity style={styles.button} onPress={() => pressChatlog()}>         
         <View onClick={() => pressChatlog()}
-          style={[styles.chatlog, { backgroundColor: bkgColors}]}>
+          style={[styles.chatlog, { backgroundColor: bkgColors+(bkgColors.lenght<6?"a":"aa")}]}>
           <Text style={styles.chatlogName}> {name}</Text>
           <Text style={styles.chatlogDesc}> {desc} </Text>  
         </View>

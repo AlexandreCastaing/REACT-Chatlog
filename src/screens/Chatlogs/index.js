@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect} from 'react';
 import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { pressChatlog } from "@redux/chatlogs/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Chatlog from '@components/Chatlog';
-import API from '@lib/API';
 
  const Chatlogs =  (props) => {
-    const { pressChatlog, chatlogs, user, navigation } = props;
-    const [displayAdd, setDisplayAdd] = useState(false);
+    let { pressChatlog, loadChatlogs, chatlogs, user, navigation } = props;
+  
+  //if(loadChatlogs!=undefined)
+  
+
+  useEffect(()=>{
+    loadChatlogs();
+  }, [chatlogs]/*[]/*chatlogs*/);
 
     if (!user.loggedIn) {
       return (
@@ -18,18 +23,14 @@ import API from '@lib/API';
       );
     }
 
-    const dataJson = (async ()=>await API("Chatlogs", "GET", {}))
-
-    console.log(dataJson)
-    
     let viewReturn = null
-    if(dataJson.lenght > 0)
+    if(chatlogs && chatlogs.length > 0)
          viewReturn = (
             <View style={styles.wrapper}>
               <ScrollView horizontal={false} style={styles.chatlogs}>
-                {dataJson.map((chatlog) => (
+                {chatlogs.map((chatlog) => (
                     <View>
-                        <Chatlog chatlog={chatlog} navigation={navigation} key={item.idChatlog.toString()}/>
+                        <Chatlog chatlog={chatlog} navigation={navigation} key={chatlog.idChatlog}/>
                     </View>
                 ))}
               </ScrollView>
@@ -41,7 +42,7 @@ import API from '@lib/API';
             <View style={styles.wrapper}>
               <ScrollView horizontal={false} style={styles.chatlogs}>
                   <View>
-                      <Text>No Chatlog.</Text>
+                      <Text>No Chatlogs.</Text>
                   </View>
               </ScrollView>
             
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
   chatlogs: state.chatlogs.chatlogs,
   user: state.user,
+  pressChatlog: pressChatlog, // << test todo remove
 });
 
 const mapDispatchToProps = (dispatch) =>

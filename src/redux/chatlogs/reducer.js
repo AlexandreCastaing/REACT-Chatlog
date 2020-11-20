@@ -1,16 +1,11 @@
 import chatlogsActions from "./constants";
 
 const initialState = {
-  chatlogs: [
-    {
-      id: 1,
-      chatlogs: 5,
-      title: "Parfait"
-    }
-  ],
+  chatlogsJson: [],
 };
 
 export default function chatlogsReducer(state = initialState, action) {
+  /*state = {chatlogsJson: [], }; // remove*/ 
   switch (action.type) {
     case chatlogsActions.SET_CHATLOGS:
       return {

@@ -9,18 +9,23 @@ export function pressChatlog(item) {
     ...chatlogs,
     item
   ];
-
   return async function (dispatch) {
     dispatch(setChatlogs(newChatlogs));
   }
 }
 
+export function loadChatlogs(){
+  return async (dispatch)=>{
+    const chatlogsJson = await API("Chatlogs","GET",{});
+    dispatch(setChatlogs(chatlogsJson));
+  }
+}
+
 export function setChatlogs(chatlogs) {
-  // On passe les infos au reducer, via le dispatcher.
   return async function (dispatch) {
     dispatch({
       type: chatlogsActions.SET_CHATLOGS,
-      chatlogs: chatlogs,
+      chatlogs: chatlogs,  
     })
   };
 }
