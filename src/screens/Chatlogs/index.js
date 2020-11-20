@@ -18,14 +18,16 @@ import API from '@lib/API';
       );
     }
 
+    const dataJson = (async ()=>await API("Chatlogs", "GET", {}))
+
+    console.log(dataJson)
+    
     let viewReturn = null
-    viewReturn = API("Chatlogs", "GET", {}, (async (chatlogsJson)=>{
-      
-        if(chatlogsJson.lenght > 0)
-          return (
+    if(dataJson.lenght > 0)
+         viewReturn = (
             <View style={styles.wrapper}>
               <ScrollView horizontal={false} style={styles.chatlogs}>
-                {chatlogsJson.map((chatlog) => (
+                {dataJson.map((chatlog) => (
                     <View>
                         <Chatlog chatlog={chatlog} navigation={navigation} key={item.idChatlog.toString()}/>
                     </View>
@@ -34,8 +36,8 @@ import API from '@lib/API';
             
             </View>
           )
-        else 
-        return (
+      else 
+        viewReturn = (
             <View style={styles.wrapper}>
               <ScrollView horizontal={false} style={styles.chatlogs}>
                   <View>
@@ -45,8 +47,6 @@ import API from '@lib/API';
             
             </View>
           )
-    }))
-    console.log(viewReturn)
     return viewReturn;
    
 }
