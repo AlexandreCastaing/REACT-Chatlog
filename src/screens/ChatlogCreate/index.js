@@ -3,15 +3,15 @@ import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
 const ChatlogCreate = () => {
 
-  function handleChange() {
-    this.setState({value: target.value});
+  function handleChange(event) {
+    this.setState({value: event.target.value});
   }
   
-  function handleSubmit() {
+  function handleSubmit(event) {
     alert('Chatlog Sent');
     preventDefault();
   }
-  
+
   return (
     <View style={styles.chatlog_Create_Container}>
 
@@ -20,25 +20,25 @@ const ChatlogCreate = () => {
         <Text>
           Chatlog Name  
         </Text>
-        <TextInput  type="text" name="ChatlogName" onChange={handleChange} />
+        <TextInput  type="text" name="ChatlogName" onChange={this.handleChange} />
         <Text>
           Accessing By Password
         </Text>
-        <TextInput  type="checkbox" name="ChatlogHasPassword" onChange={handleChange} />
+        <TextInput  type="checkbox" name="ChatlogHasPassword" onChange={this.handleChange} />
         <Text>
           Password
         </Text>
-        <TextInput  type="password" name="ChatlogPassword" onChange={handleChange} />
+        <TextInput  type="password" name="ChatlogPassword" onChange={this.handleChange} />
         <Text>
           Description
         </Text>
-        <TextInput  type="text" name="ChatlogDescription" onChange={handleChange} />
+        <TextInput  type="text" name="ChatlogDescription" onChange={this.handleChange} />
         <Text>
           Color
         </Text>
-        <TextInput  type="text" name="ChatlogColor" onChange={handleChange}/> 
+        <TextInput  type="text" name="ChatlogColor" onChange={this.handleChange}/> 
         
-        <Button onPress={handleSubmit}>Créer</Button>
+        <Button onPress={this.handleSubmit} title="Créer"></Button>
 
     </View>
   );
