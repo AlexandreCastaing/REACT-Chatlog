@@ -10,7 +10,7 @@ export default function chatlogsReducer(state = initialState, action) {
     case chatlogsActions.SET_CHATLOGS:
       return {
         ...state,
-        chatlogs: action.chatlogs,
+        chatlogsJson: action.chatlogsJson,
       };
     default:
       return state;

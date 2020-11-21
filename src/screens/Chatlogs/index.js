@@ -1,19 +1,23 @@
 import React, { useEffect} from 'react';
 import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { pressChatlog } from "@redux/chatlogs/actions";
+import { pressChatlog, loadChatlogs } from "@redux/chatlogs/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Chatlog from '@components/Chatlog';
 
  const Chatlogs =  (props) => {
-    let { pressChatlog, loadChatlogs, chatlogs, user, navigation } = props;
+    let { pressChatlog, loadChatlogs, chatlogsJson, user, navigation } = props;
   
   //if(loadChatlogs!=undefined)
+
+  let chatlogs= chatlogsJson;
   
+  //console.log(chatlogsJson)
 
   useEffect(()=>{
     loadChatlogs();
   }, [chatlogs]/*[]/*chatlogs*/);
+
 
     if (!user.loggedIn) {
       return (
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  chatlogs: state.chatlogs.chatlogs,
+  chatlogsJson: state.chatlogs.chatlogsJson,
   user: state.user,
   pressChatlog: pressChatlog, // << test todo remove
 });
@@ -93,6 +97,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       pressChatlog,
+      loadChatlogs,
     },
     dispatch
   );

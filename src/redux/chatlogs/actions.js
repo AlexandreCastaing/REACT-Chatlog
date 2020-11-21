@@ -1,31 +1,34 @@
 import chatlogsActions from "./constants";
 import store from "@redux";
+import API from "@lib/API";
 
 export function pressChatlog(item) {
   const currentStore = store.getState();
-  const { chatlogs } = currentStore.chatlogs;
+  const { chatlogsJson } = currentStore.chatlogsJson;
 
-  const newChatlogs = [
-    ...chatlogs,
+  const newChatlogsJson = [
+    ...chatlogsJson,
     item
   ];
   return async function (dispatch) {
-    dispatch(setChatlogs(newChatlogs));
+    dispatch(setChatlogs(newChatlogsJson));
   }
 }
 
 export function loadChatlogs(){
-  return async (dispatch)=>{
+  console.log(1)
+  return async (dispatch)=>{    
     const chatlogsJson = await API("Chatlogs","GET",{});
     dispatch(setChatlogs(chatlogsJson));
   }
 }
 
-export function setChatlogs(chatlogs) {
+export function setChatlogs(chatlogsJson) {
   return async function (dispatch) {
     dispatch({
       type: chatlogsActions.SET_CHATLOGS,
-      chatlogs: chatlogs,  
+      chatlogsJson: chatlogsJson,  
     })
   };
 }
+
