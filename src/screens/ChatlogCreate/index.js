@@ -1,107 +1,69 @@
-import React , {setState} from "react";
+import React , {useState, useEffect} from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import { changeChatlogCreate, setChatlogCreate } from "@redux/chatlogCreate/actions";
+import { actuChatlogCreate, setChatlogCreate } from "@redux/chatlogCreate/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 const ChatlogCreate = (props) => {
   
-  let {chatlogCreate, changeChatlogCreate, setChatlogCreate, user, navigation } = props;
-  chatlogCreate = chatlogCreate.chatlogCreate;
- 
+  let {changeChatlogCreate, chatlogCreate, actuChatlogCreate, setChatlogCreate, user, navigation } = props;
+  
+  console.log("index")
+  console.log(chatlogCreate)
 
-  //probleme de childs chatlogCreate
+  let chatlogCreateJson;
+  if(chatlogCreate && chatlogCreate.isLoaded){
 
+    chatlogCreate.chatlogCreate = chatlogCreateJson;
+    [chatlogCreate] = useState(chatlogCreate);
 
-
-
-
-
-
-
-
-
-
-
-  /*if(stateChatlogCreate==undefined||stateChatlogCreate==null)
-    stateChatlogCreate = {
-          inputNameChatlog: "New Chatlog",
+  }else{
+    chatlogCreate = 
+      {chatlogCreate: 
+        { 
+          inputNameChatlog: "New Chatlog",
           inputHasPasswordChatlog: "false",
           inputColorChatlog: "#292929",
           inputDescriptionChatlog: "",
-          inputPasswordChatlog: "",
-       };
-  
-      this.setState({stateChatlogCreate: stateChatlogCreate})*/
- 
+          inputPasswordChatlog: ""
+        }
+      }
+  }
+  chatlogCreateJson = chatlogCreate.chatlogCreate;
 
-      /*
-  useEffect(()=>{
-    setChatlogCreate();
-  }, [chatlogJson]/*[]/*chatlogs*//*;*/
-
-  
-
-
-    /*React.useEffect(() => {
-        setUser(props.user);
-    }, [props.user])*/
-  
-  let self = this;
 
   let handleChange_inputNameChatlog = (textValue)=>{
-    chatlogCreate.inputNameChatlog= textValue.value;
-    //let chatlogCreateParent = ({}).chatlogCreate;
-    self.setState({chatlogCreate: chatlogCreate})
+    chatlogCreateJson.inputNameChatlog= textValue.value;
+    //setChatlogCreate(chatlogCreate)
   }
 
   let handleChange_inputHasPasswordChatlog = (textValue)=>{
-    chatlogCreate.inputHasPasswordChatlog= textValue.value;
-    self.setState({chatlogCreate: chatlogCreate})
+    chatlogCreateJson.inputHasPasswordChatlog= textValue.value;
+    //setChatlogCreate(chatlogCreate)
   }
 
   let handleChange_inputColorChatlog = (textValue)=>{
-    chatlogCreate.inputColorChatlog= textValue.value;
-    self.setState({chatlogCreate: chatlogCreate})
+    chatlogCreateJson.inputColorChatlog= textValue.value;
+    //setChatlogCreate(chatlogCreate)
   }
   
   let handleChange_inputPasswordChatlog = (textValue)=>{
-    chatlogCreate.inputPasswordChatlog= textValue.value;
-    self.setState({chatlogCreate: chatlogCreate})
+    chatlogCreateJson.inputPasswordChatlog= textValue.value;
+    //setChatlogCreate(chatlogCreate)
   }
   
   let handleChange_inputDescriptionChatlog = (textValue)=>{
-    chatlogCreate.inputDescriptionChatlog= textValue.value;
-    self.setState({chatlogCreate: chatlogCreate})
+    chatlogCreateJson.inputDescriptionChatlog= textValue.value;
+    //setChatlogCreate(chatlogCreate)
   }
 
-  
-/*
-  let handleChange_inputNameChatlog = (textValue)=>{
-    stateChatlogCreate.inputNameChatlog= textValue.value
-  }
 
-  let handleChange_inputHasPasswordChatlog = (textValue)=>{
-    stateChatlogCreate.inputHasPasswordChatlog= textValue.value
-  }
-
-  let handleChange_inputColorChatlog = (textValue)=>{
-    stateChatlogCreate.inputColorChatlog= textValue.value
-  }
-  
-  let handleChange_inputPasswordChatlog = (textValue)=>{
-    stateChatlogCreate.inputPasswordChatlog= textValue.value
-  }
-  
-  let handleChange_inputDescriptionChatlog = (textValue)=>{
-    stateChatlogCreate.inputDescriptionChatlog= textValue.value
-  }
-*/
 
   let handleSubmit = (event)=>{
     //this.setState({value: event.target.value});
     //alert('OK');
     console.log(chatlogCreate);
+  
   }
   
   return (
@@ -110,15 +72,15 @@ const ChatlogCreate = (props) => {
         <Text style={styles.title}>Making New Chatlog</Text>
         
         <Text style={styles.label}>Chatlog Name</Text>
-        <TextInput style={styles.input} label="" value={chatlogCreate.inputNameChatlog} type="text" name="ChatlogName" onChange={handleChange_inputNameChatlog} />
+        <TextInput style={styles.input} label="" value={chatlogCreateJson.inputNameChatlog} type="text" name="ChatlogName" onChange={handleChange_inputNameChatlog} />
         <Text style={styles.label}>Accessing By Password ?</Text>
-        <TextInput style={styles.input} label='' value={chatlogCreate.inputHasPasswordChatlog} type="checkbox" name="ChatlogHasPassword" onChange={handleChange_inputHasPasswordChatlog} />
+        <TextInput style={styles.input} label='' value={chatlogCreateJson.inputHasPasswordChatlog} type="text" name="ChatlogHasPassword" onChange={handleChange_inputHasPasswordChatlog} />
         <Text style={styles.label}>Password</Text>
-        <TextInput style={styles.input} label='' value={chatlogCreate.inputDescriptionChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChange={handleChange_inputPasswordChatlog} />
+        <TextInput style={styles.input} label='' value={chatlogCreateJson.inputPasswordChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChange={handleChange_inputPasswordChatlog} />
         <Text style={styles.label}>Description</Text>
-        <TextInput style={styles.input} label='' value={chatlogCreate.inputPasswordChatlog} type="text" name="ChatlogDescription" onChange={handleChange_inputDescriptionChatlog} />
+        <TextInput style={styles.input} label='' value={chatlogCreateJson.inputDescriptionChatlog} type="text" name="ChatlogDescription"  onChange={handleChange_inputDescriptionChatlog} />
         <Text style={styles.label}>Color</Text>
-        <TextInput style={styles.input} label='' value={chatlogCreate.inputColorChatlog} type="text" name="ChatlogColor" onChange={handleChange_inputColorChatlog}/> 
+        <TextInput style={styles.input} label='' value={chatlogCreateJson.inputColorChatlog} type="text" name="ChatlogColor" onChange={handleChange_inputColorChatlog}/> 
         
         <Button onPress={handleSubmit} title="Créer"></Button>
 
@@ -180,7 +142,7 @@ const mapStateToProps = (state) => {
 
   return ({
     chatlogCreate: state.chatlogCreate,
-    changeChatlogCreate: changeChatlogCreate, // << test todo remove
+    actuChatlogCreate: actuChatlogCreate, // << test todo remove
   }) 
 
 };
@@ -188,7 +150,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      changeChatlogCreate,
+      actuChatlogCreate,
       setChatlogCreate,
     },
     dispatch

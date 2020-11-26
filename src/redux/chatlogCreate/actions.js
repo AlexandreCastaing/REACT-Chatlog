@@ -16,6 +16,9 @@ export function changeChatlogCreate(item) {
 }
 
 export function setChatlogCreate(chatlogCreate) {
+  console.log("set action")
+  console.log(chatlogCreate)
+  
   return async function (dispatch) {
     dispatch({
       type: chatlogActions.SET_CHATLOG,
@@ -25,9 +28,15 @@ export function setChatlogCreate(chatlogCreate) {
 }
 
 export function actuChatlogCreate(chatlogCreate) {
+  console.log("actu action")
   console.log(chatlogCreate)
-  console.log("OKKKK")
   
+  return async function (dispatch) {
+    dispatch({
+      type: chatlogActions.ACTU_CHATLOG,
+      chatlogCreate: chatlogCreate,  
+    })
+  };
 }
 
 
