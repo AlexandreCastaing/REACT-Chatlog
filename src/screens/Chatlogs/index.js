@@ -12,8 +12,6 @@ import Chatlog from '@components/Chatlog';
 
   let chatlogs= chatlogsJson;
   
-  //console.log(chatlogsJson)
-
   useEffect(()=>{
     loadChatlogs();
   }, [chatlogs]/*[]/*chatlogs*/);

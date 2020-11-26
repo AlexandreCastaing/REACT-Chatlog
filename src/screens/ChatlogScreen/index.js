@@ -4,12 +4,15 @@ import { View, Text, StyleSheet } from "react-native";
 const ChatlogScreen = (props) => {
   
   const { route } = props;
-  let chatlog;
-  if(route && route.params)
-     chatlog = route.params.chatlog;
-  
+  const chatlog = (route && route.params) ? route.params.chatlog : {};
 
-  if(chatlog!=undefined&&chatlog!=null)
+
+
+
+  if(chatlog!=undefined&&chatlog!=null){
+
+  //TODO   récupérer messages depuis API
+
     return (
 
       <View style={styles.container}>
@@ -18,9 +21,8 @@ const ChatlogScreen = (props) => {
 
       </View>
     );
-
+  }
   return (
-
     <View style={styles.container}>
       <Text>No Chatlog.</Text>
     </View>

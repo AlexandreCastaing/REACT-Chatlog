@@ -15,22 +15,27 @@ export function changeChatlogCreate(item) {
   }
 }
 
-export function setChatlogCreate(chatlogCreate) {
-  console.log("set action")
-  console.log(chatlogCreate)
+export function setChatlogCreate(chatlogCreate, navigation) {
   
-  return async function (dispatch) {
+  let json = {};
+  json.name = chatlogCreate.inputNameChatlog;
+  json.hasPassword = chatlogCreate.inputHasPasswordChatlog;
+  json.color = chatlogCreate.inputColorChatlog;
+  json.description = chatlogCreate.inputDescriptionChatlog;
+  json.password = chatlogCreate.inputPasswordChatlog;
+  json.idUser = "test"
+
+  return async (dispatch)=>{    
+    const chatlogCreateReturn = await API("Chatlog","POST",json);
+    navigation.navigate("ChatlogScreen", { chatlog: chatlogCreateReturn });
     dispatch({
       type: chatlogActions.SET_CHATLOG,
-      chatlogCreate: chatlogCreate,  
+      chatlogCreate: chatlogCreateReturn,  
     })
-  };
+  }
 }
 
 export function actuChatlogCreate(chatlogCreate) {
-  console.log("actu action")
-  console.log(chatlogCreate)
-  
   return async function (dispatch) {
     dispatch({
       type: chatlogActions.ACTU_CHATLOG,

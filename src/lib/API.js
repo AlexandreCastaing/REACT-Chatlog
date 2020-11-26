@@ -1,8 +1,10 @@
 
-const API = async (_route, _method, _data, _host) => {
+const API = async (_route, _method, _data) => {
     let host = "http://192.168.1.97:2299"
     let _url = host + "/" +_route;
 
+    console.log("API CALL: "+_url + "  "+_method+"  "+"  ..");
+    //console.log(_data);
 
     if(_method.toUpperCase()=="GET"||_method.toUpperCase()=="HEAD"){
         

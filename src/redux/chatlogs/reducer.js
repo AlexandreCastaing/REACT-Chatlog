@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export default function chatlogsReducer(state = initialState, action) {
-  /*state = {chatlogsJson: [], }; // remove*/ 
   switch (action.type) {
     case chatlogsActions.SET_CHATLOGS:
       return {
