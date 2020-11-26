@@ -16,7 +16,6 @@ export function pressChatlog(item) {
 }
 
 export function loadChatlogs(){
-  console.log(1)
   return async (dispatch)=>{    
     const chatlogsJson = await API("Chatlogs","GET",{});
     dispatch(setChatlogs(chatlogsJson));

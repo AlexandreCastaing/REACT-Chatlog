@@ -1,44 +1,124 @@
-import React from "react";
+import React , {setState} from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { changeChatlogCreate, setChatlogCreate } from "@redux/chatlogCreate/actions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-const ChatlogCreate = () => {
+const ChatlogCreate = (props) => {
+  
+  let {chatlogCreate, changeChatlogCreate, setChatlogCreate, user, navigation } = props;
+  chatlogCreate = chatlogCreate.chatlogCreate;
+ 
+  console.log(chatlogCreate)
 
-  function handleChange(event) {
-    this.setState({value: event.target.value});
+  //probleme de childs chatlogCreate
+
+
+
+
+
+
+
+
+
+
+
+
+  /*if(stateChatlogCreate==undefined||stateChatlogCreate==null)
+    stateChatlogCreate = {
+          inputNameChatlog: "New Chatlog",
+          inputHasPasswordChatlog: "false",
+          inputColorChatlog: "#292929",
+          inputDescriptionChatlog: "",
+          inputPasswordChatlog: "",
+       };
+  
+      this.setState({stateChatlogCreate: stateChatlogCreate})*/
+ 
+
+      /*
+  useEffect(()=>{
+    setChatlogCreate();
+  }, [chatlogJson]/*[]/*chatlogs*//*;*/
+
+  
+
+
+    /*React.useEffect(() => {
+        setUser(props.user);
+    }, [props.user])*/
+  
+  let handleChange_inputNameChatlog = (textValue)=>{
+    chatlogCreate.inputNameChatlog= textValue.value;
+    this.setState({chatlogCreate: chatlogCreate})
+  }
+
+  let handleChange_inputHasPasswordChatlog = (textValue)=>{
+    chatlogCreate.inputHasPasswordChatlog= textValue.value;
+    this.setState({chatlogCreate: chatlogCreate})
+  }
+
+  let handleChange_inputColorChatlog = (textValue)=>{
+    chatlogCreate.inputColorChatlog= textValue.value;
+    this.setState({chatlogCreate: chatlogCreate})
   }
   
-  function handleSubmit(event) {
-    alert('Chatlog Sent');
-    preventDefault();
+  let handleChange_inputPasswordChatlog = (textValue)=>{
+    chatlogCreate.inputPasswordChatlog= textValue.value;
+    this.setState({chatlogCreate: chatlogCreate})
+  }
+  
+  let handleChange_inputDescriptionChatlog = (textValue)=>{
+    chatlogCreate.inputDescriptionChatlog= textValue.value;
+    this.setState({chatlogCreate: chatlogCreate})
   }
 
+  
+/*
+  let handleChange_inputNameChatlog = (textValue)=>{
+    stateChatlogCreate.inputNameChatlog= textValue.value
+  }
+
+  let handleChange_inputHasPasswordChatlog = (textValue)=>{
+    stateChatlogCreate.inputHasPasswordChatlog= textValue.value
+  }
+
+  let handleChange_inputColorChatlog = (textValue)=>{
+    stateChatlogCreate.inputColorChatlog= textValue.value
+  }
+  
+  let handleChange_inputPasswordChatlog = (textValue)=>{
+    stateChatlogCreate.inputPasswordChatlog= textValue.value
+  }
+  
+  let handleChange_inputDescriptionChatlog = (textValue)=>{
+    stateChatlogCreate.inputDescriptionChatlog= textValue.value
+  }
+*/
+
+  let handleSubmit = (event)=>{
+    //this.setState({value: event.target.value});
+    //alert('OK');
+    console.log(chatlogCreate);
+  }
+  
   return (
     <View style={styles.chatlog_Create_Container}>
 
-        <Text>Making New Chatlog</Text>
-
-        <Text>
-          Chatlog Name  
-        </Text>
-        <TextInput  type="text" name="ChatlogName" onChange={this.handleChange} />
-        <Text>
-          Accessing By Password
-        </Text>
-        <TextInput  type="checkbox" name="ChatlogHasPassword" onChange={this.handleChange} />
-        <Text>
-          Password
-        </Text>
-        <TextInput  type="password" name="ChatlogPassword" onChange={this.handleChange} />
-        <Text>
-          Description
-        </Text>
-        <TextInput  type="text" name="ChatlogDescription" onChange={this.handleChange} />
-        <Text>
-          Color
-        </Text>
-        <TextInput  type="text" name="ChatlogColor" onChange={this.handleChange}/> 
+        <Text style={styles.title}>Making New Chatlog</Text>
         
-        <Button onPress={this.handleSubmit} title="Créer"></Button>
+        <Text style={styles.label}>Chatlog Name</Text>
+        <TextInput style={styles.input} label="" value={chatlogCreate.inputNameChatlog} type="text" name="ChatlogName" onChange={handleChange_inputNameChatlog} />
+        <Text style={styles.label}>Accessing By Password ?</Text>
+        <TextInput style={styles.input} label='' value={chatlogCreate.inputHasPasswordChatlog} type="checkbox" name="ChatlogHasPassword" onChange={handleChange_inputHasPasswordChatlog} />
+        <Text style={styles.label}>Password</Text>
+        <TextInput style={styles.input} label='' value={chatlogCreate.inputDescriptionChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChange={handleChange_inputPasswordChatlog} />
+        <Text style={styles.label}>Description</Text>
+        <TextInput style={styles.input} label='' value={chatlogCreate.inputPasswordChatlog} type="text" name="ChatlogDescription" onChange={handleChange_inputDescriptionChatlog} />
+        <Text style={styles.label}>Color</Text>
+        <TextInput style={styles.input} label='' value={chatlogCreate.inputColorChatlog} type="text" name="ChatlogColor" onChange={handleChange_inputColorChatlog}/> 
+        
+        <Button onPress={handleSubmit} title="Créer"></Button>
 
     </View>
   );
@@ -47,12 +127,37 @@ const ChatlogCreate = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    textAlign: "center",
+    width: "100%"
   },
   chatlog_Create_Container: {
     width: "100%",
     height: "100%",
     justifyContent: "center",
-    flexWrap: "nowrap"
+    flexWrap: "nowrap",
+    textAlign: "center",
+    width: "100%"
+  },
+  title:{
+    fontSize: 28,
+  },
+  label:{
+    fontSize: 16,
+  },
+  input:{
+    width: 280,
+    height: 40,
+    backgroundColor: "#fff",
+    fontSize: 16,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
   chatlogName:{
     textAlign: "center",
@@ -67,4 +172,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatlogCreate;
+
+const mapStateToProps = (state) => { 
+ // console.log(state.chatlogCreate)
+
+  return ({
+    chatlogCreate: state.chatlogCreate,
+    changeChatlogCreate: changeChatlogCreate, // << test todo remove
+  }) 
+
+};
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      changeChatlogCreate,
+      setChatlogCreate,
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatlogCreate);
