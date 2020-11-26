@@ -9,7 +9,6 @@ const ChatlogCreate = (props) => {
   let {chatlogCreate, changeChatlogCreate, setChatlogCreate, user, navigation } = props;
   chatlogCreate = chatlogCreate.chatlogCreate;
  
-  console.log(chatlogCreate)
 
   //probleme de childs chatlogCreate
 
@@ -48,29 +47,36 @@ const ChatlogCreate = (props) => {
         setUser(props.user);
     }, [props.user])*/
   
+  let self = this;
+
   let handleChange_inputNameChatlog = (textValue)=>{
     chatlogCreate.inputNameChatlog= textValue.value;
-    this.setState({chatlogCreate: chatlogCreate})
+    let chatlogCreateParent = ({}).chatlogCreate;
+    self.setState({chatlogCreate: chatlogCreateParent})
   }
 
   let handleChange_inputHasPasswordChatlog = (textValue)=>{
     chatlogCreate.inputHasPasswordChatlog= textValue.value;
-    this.setState({chatlogCreate: chatlogCreate})
+    let chatlogCreateParent = ({}).chatlogCreate;
+    self.setState({chatlogCreate: chatlogCreateParent})
   }
 
   let handleChange_inputColorChatlog = (textValue)=>{
     chatlogCreate.inputColorChatlog= textValue.value;
-    this.setState({chatlogCreate: chatlogCreate})
+    let chatlogCreateParent = ({}).chatlogCreate;
+    self.setState({chatlogCreate: chatlogCreateParent})
   }
   
   let handleChange_inputPasswordChatlog = (textValue)=>{
     chatlogCreate.inputPasswordChatlog= textValue.value;
-    this.setState({chatlogCreate: chatlogCreate})
+    let chatlogCreateParent = ({}).chatlogCreate;
+    self.setState({chatlogCreate: chatlogCreateParent})
   }
   
   let handleChange_inputDescriptionChatlog = (textValue)=>{
     chatlogCreate.inputDescriptionChatlog= textValue.value;
-    this.setState({chatlogCreate: chatlogCreate})
+    let chatlogCreateParent = ({}).chatlogCreate;
+    self.setState({chatlogCreate: chatlogCreateParent})
   }
 
   
