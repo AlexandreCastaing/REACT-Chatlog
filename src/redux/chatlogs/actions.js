@@ -2,13 +2,13 @@ import chatlogsActions from "./constants";
 import store from "@redux";
 import API from "@lib/API";
 
-export function pressChatlog(item) {
+export function pressChatlog(chatlog) {
   const currentStore = store.getState();
   const { chatlogsJson } = currentStore.chatlogsJson;
 
   const newChatlogsJson = [
     ...chatlogsJson,
-    item
+    chatlog
   ];
   return async function (dispatch) {
     dispatch(setChatlogs(newChatlogsJson));

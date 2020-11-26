@@ -62,11 +62,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%"
   },
-  smileys: {
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "center",
-  },
   buttonWrapper: {
     position: "absolute",
     bottom: 50,

@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, Button, TouchableOpacity, View } from 'react-native';
 
-import ChatlogScreen from '@screens/ChatlogScreen';
-
 const Chatlog = (props) => {
   const { chatlog, navigation, user } = props;
 
