@@ -7,19 +7,30 @@ import { bindActionCreators } from "redux";
 const Messages = (props) => {
   const { chatlog, messages, getMessages } = props;
 
-  console.log(chatlog)
+  //console.log(chatlog)
+  
   if(!chatlog) return (<View style={styles.wrapper}></View>);
 
-  console.log(getMessages(chatlog));
-
   useEffect(()=>{
-    getMessages(chatlog);
+
+    let timer;
+
+    if (messages.length === 0) {
+      getMessages(chatlog);
+    }else{
+      timer = setTimeout(() => {
+        getMessages(chatlog);
+      }, 2000);
+
+    }
+    if(timer)
+      return () => clearTimeout(timer);
+    
   }, [messages]);
 
+  console.log(chatlog)
 
-  console.log(messages)
-
-  if(messages && messages.length > 0)
+  if(messages && messages.length > 0){
     return ( 
         <View style={styles.wrapper}>
         <ScrollView horizontal={false} style={styles.messages}>
@@ -33,6 +44,8 @@ const Messages = (props) => {
       
       </View>
     )
+  }
+  
   return (<View style={styles.wrapper}></View>);
 }
 
@@ -53,6 +66,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  messages: state.chatlogScreen.messages
 });
 
 const mapDispatchToProps = (dispatch) =>

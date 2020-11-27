@@ -12,8 +12,27 @@ import Chatlog from '@components/Chatlog';
 
   let chatlogs= chatlogsJson;
   
+  /*
   useEffect(()=>{
     loadChatlogs();
+  }, [chatlogs]);
+  */
+
+  useEffect(()=>{
+
+    let timer;
+
+    if (chatlogs.length === 0) {
+      loadChatlogs();
+    }else{
+      timer = setTimeout(() => {
+        loadChatlogs();
+      }, 2000);
+
+    }
+    if(timer)
+      return () => clearTimeout(timer);
+    
   }, [chatlogs]);
 
 

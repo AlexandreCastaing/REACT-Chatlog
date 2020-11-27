@@ -109,6 +109,7 @@ const mapStateToProps = (state) => {
   return ({
     chatlogCreate: state.chatlogCreate,
     actuChatlogCreate: actuChatlogCreate, // << test todo remove
+    
   }) 
 
 };

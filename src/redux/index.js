@@ -6,11 +6,13 @@ import thunk from "redux-thunk";
 import chatlogs from "@redux/chatlogs/reducer";
 import user from "@redux/user/reducer";
 import chatlogCreate from "@redux/chatlogCreate/reducer";
+import chatlogScreen from "@redux/chatlogScreen/reducer";
 
 const reducers = {
   chatlogs,
   user,
   chatlogCreate,
+  chatlogScreen,
 };
 
 export default createStore(

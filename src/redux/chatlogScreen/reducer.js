@@ -1,7 +1,7 @@
 import chatlogScreenActions from "./constants";
 
 const initialState = {
-  messagesJson: [],
+  messages: [],
 };
 
 export default function chatlogsReducer(state = initialState, action) {
@@ -9,10 +9,11 @@ export default function chatlogsReducer(state = initialState, action) {
     case chatlogScreenActions.SEND_MESSAGE:
       return {
         ...state,
-        messages: action.messagesJson,
+        messages: action.messages,
       };
     case chatlogScreenActions.GET_MESSAGES:
       return {
+        ...state,
         messages: action.messages,
       };
     default:
