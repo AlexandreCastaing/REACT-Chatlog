@@ -1,6 +1,8 @@
 
 const API = async (_route, _method, _data) => {
     let host = "http://192.168.1.97:2299"
+    host = "http://192.162.71.184:2299"
+    
     let _url = host + "/" +_route;
 
     console.log("API CALL: "+_url + "  "+_method+"  "+"  ..");
