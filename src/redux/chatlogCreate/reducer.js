@@ -3,9 +3,9 @@ import chatlogActions from "./constants";
 const initialState = {
   chatlogCreate: 
   { 
-    inputNameChatlog: "New Chatlog",
-    inputHasPasswordChatlog: "false",
-    inputColorChatlog: "#292929",
+    inputNameChatlog: "", //New Chatlog
+    inputHasPasswordChatlog: "", //false
+    inputColorChatlog: "", //#292929
     inputDescriptionChatlog: "",
     inputPasswordChatlog: ""
   }

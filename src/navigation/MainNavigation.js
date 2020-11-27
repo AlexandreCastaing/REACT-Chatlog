@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Chatlogs from "@screens/Chatlogs";
 import ChatlogScreen from "@screens/ChatlogScreen";
-import  ChatlogCreate from "@screens/ChatlogCreate";
+import ChatlogCreate from "@screens/ChatlogCreate";
 import Profile from "@screens/Profile";
 
 const Stack = createStackNavigator();

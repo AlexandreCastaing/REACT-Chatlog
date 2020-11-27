@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { actuChatlogCreate, setChatlogCreate } from "@redux/chatlogCreate/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import CheckBox from "@lib/CheckBox";
 
 const ChatlogCreate = (props) => {
   
@@ -11,15 +12,12 @@ const ChatlogCreate = (props) => {
 
   const chatlogCreateJson = chatlogCreate.chatlogCreate;
 
-  // todo 
-  const [inputNameChatlog, setNameChatlog] = useState(chatlogCreateJson.inputNameChatlog)
-  const [inputHasPasswordChatlog, setHasPasswordChatlog] = useState(chatlogCreateJson.inputHasPasswordChatlog)
-  const [inputColorChatlog, setColorChatlog] = useState(chatlogCreateJson.inputColorChatlog)
-  const [inputDescriptionChatlog, setDescriptionChatlog] = useState(chatlogCreateJson.inputDescriptionChatlog)
-  const [inputPasswordChatlog, setPasswordChatlog] = useState(chatlogCreateJson.inputPasswordChatlog)
-
-
-
+  
+  let  [inputNameChatlog, setNameChatlog] = useState(chatlogCreateJson.inputNameChatlog)
+  let  [inputHasPasswordChatlog, setHasPasswordChatlog] = useState(chatlogCreateJson.inputHasPasswordChatlog)
+  let  [inputColorChatlog, setColorChatlog] = useState(chatlogCreateJson.inputColorChatlog)
+  let  [inputDescriptionChatlog, setDescriptionChatlog] = useState(chatlogCreateJson.inputDescriptionChatlog)
+  let  [inputPasswordChatlog, setPasswordChatlog] = useState(chatlogCreateJson.inputPasswordChatlog)
 
   const handleSubmit = (event)=>{
       const chatlogInfosCreate = 
@@ -33,6 +31,10 @@ const ChatlogCreate = (props) => {
 
       setChatlogCreate(chatlogInfosCreate, navigation)
   }
+
+  let test = ()=>{
+    console.log("ok")
+  }
   
   return (
     <View style={styles.chatlog_Create_Container}>
@@ -40,15 +42,17 @@ const ChatlogCreate = (props) => {
         <Text style={styles.title}>Making New Chatlog</Text>
         
         <Text style={styles.label}>Chatlog Name</Text>
-        <TextInput style={styles.input} label="" value={inputNameChatlog} type="text" name="ChatlogName" onChangeText={(text) => setNameChatlog(text)} />
-        <Text style={styles.label}>Accessing By Password ?</Text>
-        <TextInput style={styles.input} label='' value={inputHasPasswordChatlog} type="text" name="ChatlogHasPassword" onChangeText={(text) => setHasPasswordChatlog(text)} />
+        <TextInput style={styles.input} label="" placeholderTextColor="#888" placeholder = "Chatlog" value={inputNameChatlog} type="text" name="ChatlogName" onChangeText={(text) => setNameChatlog(text)} />
+
+        
         <Text style={styles.label}>Password</Text>
-        <TextInput style={styles.input} label='' value={inputPasswordChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChangeText={(text) => setPasswordChatlog(text)} />
+        <CheckBox />
+        
+        <TextInput style={styles.input} label='' placeholderTextColor="#888" value={inputPasswordChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChangeText={(text) => setPasswordChatlog(text)} />
         <Text style={styles.label}>Description</Text>
-        <TextInput style={styles.input} label='' value={inputDescriptionChatlog} type="text" name="ChatlogDescription"  onChangeText={(text) => setDescriptionChatlog(text)} />
+        <TextInput style={styles.input} label='' placeholderTextColor="#888" value={inputDescriptionChatlog} type="text" name="ChatlogDescription"  onChangeText={(text) => setDescriptionChatlog(text)} />
         <Text style={styles.label}>Color</Text>
-        <TextInput style={styles.input} label='' value={inputColorChatlog} type="text" name="ChatlogColor" onChangeText={(text) => setColorChatlog(text)}/> 
+        <TextInput style={styles.input} label='' placeholderTextColor="#888" placeholder = "#383FA5" value={inputColorChatlog} type="text" name="ChatlogColor" onChangeText={(text) => setColorChatlog(text)}/> 
         
         <Button onPress={handleSubmit} title="Créer"></Button>
 
@@ -104,12 +108,11 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const mapStateToProps = (state) => { 
   return ({
     chatlogCreate: state.chatlogCreate,
     actuChatlogCreate: actuChatlogCreate, // << test todo remove
-    
+
   }) 
 
 };

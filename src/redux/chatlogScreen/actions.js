@@ -2,13 +2,12 @@ import chatlogScreenActions from "./constants";
 import store from "@redux";
 import API from "@lib/API";
 
-export function sendMessage(chatlog) {
-  const currentStore = store.getState();
-  const { messageJson } = currentStore.messageJson;
+export function sendMessage(chatlog, message) {
 
   return async (dispatch)=>{    
 
     let json = {}
+    json.message = message
     json.idChatlog = chatlog.idChatlog
     json.idUser = "test"
 

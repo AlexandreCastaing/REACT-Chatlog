@@ -28,10 +28,6 @@ const ChatlogScreen = (props) => {
     );
   }
 
-  //chatlog.name
-  
-  //TODO   récupérer messages depuis API
-
     return (
 
      <View style={styles.container}> 

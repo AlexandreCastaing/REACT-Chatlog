@@ -28,7 +28,7 @@ const Chatlog = (props) => {
 const styles = StyleSheet.create({
   chatlog: {
     width: "100%",
-    height: 120,
+    height: 85,
     justifyContent: "center",
     flexWrap: "nowrap"
   },

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, Button, TouchableOpacity, View, ScrollView } from 'react-native';
-import { sendMessage, getMessages } from "@redux/chatlogScreen/actions";
+import { getMessages } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -11,21 +11,18 @@ const Messages = (props) => {
   
   if(!chatlog) return (<View style={styles.wrapper}></View>);
 
+  getMessages(chatlog);
+  
   useEffect(()=>{
 
-    let timer;
-
-    if (messages.length === 0) {
+    const getMessagesInterval = setInterval(() => {
       getMessages(chatlog);
-    }else{
-      timer = setTimeout(() => {
-        getMessages(chatlog);
-      }, 2000);
+    }, 2500);
 
-    }
-    if(timer)
-      return () => clearTimeout(timer);
-    
+    return () => {
+      clearInterval(getMessagesInterval);
+    };
+  
   }, [messages]);
 
   console.log(chatlog)
@@ -55,12 +52,13 @@ const styles = StyleSheet.create({
   },
   message: {
     width: "100%",
-    height: 40,
+    height: 25,
     justifyContent: "center",
     flexWrap: "nowrap"
   },
   messageText: {
-    height: 40,
+    fontSize: 15,
+    height: 25,
   }
 })
 

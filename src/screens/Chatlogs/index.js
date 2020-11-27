@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import Chatlog from '@components/Chatlog';
 
  const Chatlogs =  (props) => {
-    let { pressChatlog, loadChatlogs, chatlogsJson, user, navigation } = props;
+    let { route, pressChatlog, loadChatlogs, chatlogsJson, user, navigation } = props;
   
   //if(loadChatlogs!=undefined)
 
@@ -17,21 +17,17 @@ import Chatlog from '@components/Chatlog';
     loadChatlogs();
   }, [chatlogs]);
   */
-
+ loadChatlogs();
+ 
   useEffect(()=>{
 
-    let timer;
-
-    if (chatlogs.length === 0) {
+    const getMessagesInterval = setInterval(() => {
       loadChatlogs();
-    }else{
-      timer = setTimeout(() => {
-        loadChatlogs();
-      }, 2000);
+    }, 2500);
 
-    }
-    if(timer)
-      return () => clearTimeout(timer);
+    return () => {
+      clearInterval(getMessagesInterval);
+    };
     
   }, [chatlogs]);
 
