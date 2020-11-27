@@ -4,13 +4,21 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MessageSend from '@components/ChatlogScreen/MessageSend';
 import Messages from '@components/ChatlogScreen/Messages';
-//import { sendMessage, loadMessages } from "@redux/chatlogScreen/actions";
 
 const ChatlogScreen = (props) => {
   
-  const { route } = props;
+  const { route, user, messages } = props;
   const chatlog = (route && route.params) ? route.params.chatlog : {};
 
+  /*
+  if (!user.loggedIn) {
+    return (
+      <View style={styles.wrapper}>
+        <Text>Vous devez être connecté pour utiliser cette fonctionnalité.</Text>
+      </View>
+    );
+  }
+  */
 
   if(!(chatlog!=undefined&&chatlog!=null)){
     return (

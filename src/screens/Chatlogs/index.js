@@ -14,7 +14,7 @@ import Chatlog from '@components/Chatlog';
   
   useEffect(()=>{
     loadChatlogs();
-  }, [chatlogs]/*[]/*chatlogs*/);
+  }, [chatlogs]);
 
 
     if (!user.loggedIn) {

@@ -25,8 +25,8 @@ export function getMessages(chatlog){
   return async (dispatch)=>{    
     const messagesJson = await API("Messages","GET",{idChatlog: chatlog.idChatlog, idUser: "test"});
     dispatch({
-        type: chatlogScreenActions.SET_MESSAGES,
-        messages: getMessages(messagesJson)
+        type: chatlogScreenActions.GET_MESSAGES,
+        messages: messagesJson
     });
   }
 }

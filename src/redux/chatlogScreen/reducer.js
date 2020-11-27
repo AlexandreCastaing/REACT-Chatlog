@@ -6,10 +6,14 @@ const initialState = {
 
 export default function chatlogsReducer(state = initialState, action) {
   switch (action.type) {
-    case chatlogScreenActions.SET_CHATLOGS:
+    case chatlogScreenActions.SEND_MESSAGE:
       return {
         ...state,
-        messagesJson: action.messagesJson,
+        messages: action.messagesJson,
+      };
+    case chatlogScreenActions.GET_MESSAGES:
+      return {
+        messages: action.messages,
       };
     default:
       return state;
