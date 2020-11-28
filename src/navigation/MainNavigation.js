@@ -2,6 +2,7 @@ import React from "react";
 import { StatusBar, Image, Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { connect } from "react-redux";
@@ -34,6 +35,12 @@ const TabsNavigation = () => (
     <Tabs.Screen
       name="ChatlogsList"
       component={Chatlogs}
+      options={{
+        tabBarLabel: 'Chatlogs',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="home" color={color} size={size} />
+        ),
+      }}
       listeners={({ navigation }) => ({
         tabPress: () => {
           navigation.navigate("ChatlogsList");
@@ -43,6 +50,12 @@ const TabsNavigation = () => (
     <Tabs.Screen
       name="ChatlogScreen"
       component={ChatlogScreen}
+      options={{
+        tabBarLabel: 'Chatlog',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="chat" color={color} size={size} />
+        ),
+      }}
       listeners={({ navigation }) => ({
         tabPress: () => {
           navigation.navigate("ChatlogScreen");
@@ -52,6 +65,12 @@ const TabsNavigation = () => (
     <Tabs.Screen
       name="ChatlogCreate"
       component={ChatlogCreate}
+      options={{
+        tabBarLabel: 'Create Chatlog',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="plus" color={color} size={size} />
+        ),
+      }}
       listeners={({ navigation }) => ({
         tabPress: () => {
           navigation.navigate("ChatlogCreate");
