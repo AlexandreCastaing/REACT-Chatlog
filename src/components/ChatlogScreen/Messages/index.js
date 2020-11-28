@@ -7,12 +7,10 @@ import { bindActionCreators } from "redux";
 const Messages = (props) => {
   const { chatlog, messages, getMessages } = props;
 
-  //console.log(chatlog)
-  
+
   if(!chatlog) return (<View style={styles.wrapper}></View>);
 
-  getMessages(chatlog);
-  
+
   useEffect(()=>{
 
     const getMessagesInterval = setInterval(() => {
@@ -34,7 +32,8 @@ const Messages = (props) => {
           {messages.map((message) => (      
               <View onClick={() => pressChatlog()}
                 style={styles.message}>
-                <Text style={styles.messageText}> {message.pseudo} : {message.message}</Text>
+                <Text style={styles.pseudo}> {message.pseudo} : </Text>
+                <Text style={styles.messageText}> {message.message}</Text>
               </View>
           ))}
         </ScrollView>
@@ -52,13 +51,14 @@ const styles = StyleSheet.create({
   },
   message: {
     width: "100%",
-    height: 25,
     justifyContent: "center",
     flexWrap: "nowrap"
   },
   messageText: {
     fontSize: 15,
-    height: 25,
+  },
+  pseudo: {
+    fontSize: 18,
   }
 })
 

@@ -17,7 +17,7 @@ const MessageSend = (props) => {
   return (
     
     <View>
-        <TextInput style={styles.input} value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
+        <TextInput style={styles.input} placeholderTextColor="#888" placeholder = "Message..." value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
         <Button style={styles.button} onPress={handleSubmit} title="OK"></Button>
     </View>
 

@@ -17,13 +17,12 @@ import Chatlog from '@components/Chatlog';
     loadChatlogs();
   }, [chatlogs]);
   */
- loadChatlogs();
- 
+
   useEffect(()=>{
 
     const getMessagesInterval = setInterval(() => {
       loadChatlogs();
-    }, 2500);
+    }, 5000);
 
     return () => {
       clearInterval(getMessagesInterval);
