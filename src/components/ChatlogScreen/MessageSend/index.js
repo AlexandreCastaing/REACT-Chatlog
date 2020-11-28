@@ -3,6 +3,7 @@ import { StyleSheet, Text, Button, TouchableOpacity, View, TextInput } from 'rea
 import { sendMessage } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MessageSend = (props) => {
   const { chatlog, navigation, user, sendMessage } = props;
@@ -16,37 +17,49 @@ const MessageSend = (props) => {
 
   return (
     
-    <View>
+    <View style={styles.sendBar}>
+
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Icon name="cog" size={15} color="white"/>  
+        </TouchableOpacity>
+
         <TextInput style={styles.input} placeholderTextColor="#888" placeholder = "Message..." value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
-        <Button style={styles.button} onPress={handleSubmit} title="OK"></Button>
+        
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Icon name="angle-double-right" size={15} color="white"/>  
+        </TouchableOpacity>
     </View>
 
   )
 }
 
 const styles = StyleSheet.create({
+  sendBar:{
+    padding:10,
+    marginTop:50,
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    backgroundColor:"#e8e8e8", 
+    height:"10%"
+  },
   input:{
-    width: '80%',
+    width: '70%',
     height: 35,
     backgroundColor: "#fff",
+    borderRadius: 10,
     fontSize: 16,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 10000,
-
+    
     elevation: 5,
   },
   button:{
-    elevation: 8,
-    backgroundColor: "#009688",
-    borderRadius: 10,
+    height:35,
+    elevation: 5,
+    backgroundColor: "#841584",
+    borderRadius: 25,
     paddingVertical: 10,
     paddingHorizontal: 12
-  }
+  },
 })
 
 const mapStateToProps = (state) => { 
