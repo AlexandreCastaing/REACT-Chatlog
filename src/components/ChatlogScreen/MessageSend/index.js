@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, Button, TouchableOpacity, View, TextInput } from 'react-native';
+import { StyleSheet, Text, Button, TouchableOpacity, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
 import { sendMessage } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -15,11 +15,19 @@ const MessageSend = (props) => {
     setMessage("")
   }
 
-  return (
-    
-    <View style={styles.sendBar}>
+  const paramMenu = () => {
+    return(
+    <form>
+      <Text>ok</Text>
+    </form>
+    )}
 
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+  return (
+    <KeyboardAvoidingView>
+
+    <SafeAreaView style={styles.sendBar}>
+
+        <TouchableOpacity style={styles.button} onPress={paramMenu}>
           <Icon name="cog" size={15} color="white"/>  
         </TouchableOpacity>
 
@@ -28,7 +36,9 @@ const MessageSend = (props) => {
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Icon name="angle-double-right" size={15} color="white"/>  
         </TouchableOpacity>
-    </View>
+
+      </SafeAreaView>
+    </KeyboardAvoidingView>
 
   )
 }
@@ -39,9 +49,8 @@ const styles = StyleSheet.create({
     marginTop:50,
     flex: 1, 
     flexDirection: 'row', 
-    justifyContent: 'space-around', 
-    backgroundColor:"#e8e8e8", 
-    height:"10%"
+    justifyContent: 'space-around',   
+    backgroundColor:"#e8e8e8",
   },
   input:{
     width: '70%',
