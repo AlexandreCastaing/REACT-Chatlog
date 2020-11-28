@@ -21,7 +21,7 @@ const Profile = (props) => {
         <Button
           title={ user.loggedIn ? "Se déconnecter" : "Se connecter" }
           onPress={_toggleStatus}
-          color="#fff"
+          color="#00aad2"
         />
       </View>
     </View>
