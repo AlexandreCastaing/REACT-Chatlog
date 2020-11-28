@@ -16,9 +16,9 @@ const MessageSend = (props) => {
 
   return (
     
-    <View>
+    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
         <TextInput style={styles.input} value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
-        <Button style={styles.button} onPress={handleSubmit} title="OK"></Button>
+        <Button  style={styles.button} title="Send" onPress={handleSubmit}></Button>
     </View>
 
   )
@@ -26,8 +26,8 @@ const MessageSend = (props) => {
 
 const styles = StyleSheet.create({
   input:{
-    width: 280,
-    height: 40,
+    width: '80%',
+    height: 35,
     backgroundColor: "#fff",
     fontSize: 16,
     shadowColor: "#000",
@@ -36,12 +36,16 @@ const styles = StyleSheet.create({
       height: 2,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowRadius: 10000,
 
     elevation: 5,
   },
   button:{
-    width:100,
+    elevation: 8,
+    backgroundColor: "#009688",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12
   }
 })
 
