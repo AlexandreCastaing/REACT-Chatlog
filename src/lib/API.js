@@ -1,5 +1,7 @@
 
 const API = async (_route, _method, _data) => {
+
+    try{
     let host = "http://192.168.1.97:2299"
     host = "http://192.162.71.184:2299"
     
@@ -63,6 +65,10 @@ const API = async (_route, _method, _data) => {
                 console.log(">> FETCH ERROR: "+error)
                 //dispatch(requestTodosError(error))
             })
+        }
+    catch(e){
+        return [];
+    }
 }
             
 export default API;

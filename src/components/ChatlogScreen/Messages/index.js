@@ -30,8 +30,8 @@ const Messages = (props) => {
         <View style={styles.wrapper}>
         <ScrollView horizontal={false} style={styles.messages}>
           {messages.map((message) => (      
-              <View onClick={() => pressChatlog()}
-                style={styles.message}>
+              <View style={styles.message}>
+                <Text style={styles.date}> {message.timestamp} : </Text>
                 <Text style={styles.pseudo}> {message.pseudo} : </Text>
                 <Text style={styles.messageText}> {message.message}</Text>
               </View>
@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
   },
   pseudo: {
     fontSize: 18,
+  },
+  date: {
+    fontSize: 12,
   }
 })
 
