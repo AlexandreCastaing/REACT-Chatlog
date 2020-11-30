@@ -9,6 +9,7 @@ const ChatlogCreate = (props) => {
   
   const {chatlogCreate, setChatlogCreate, user, navigation } = props;
   
+  const [isSelected, setSelection] = useState(false);
 
   const chatlogCreateJson = chatlogCreate.chatlogCreate;
 
@@ -36,16 +37,16 @@ const ChatlogCreate = (props) => {
   return (
     <View style={styles.chatlog_Create_Container}>
 
-        <Text style={styles.title}>Making New Chatlog</Text>
+        <Text style={styles.title}>Making New Chatlog :</Text>
         
-        <Text style={styles.label}>Chatlog Name</Text>
+        <Text style={styles.label}>Chatlog Name :</Text>
         <TextInput style={styles.input} label="" placeholderTextColor="#888" placeholder = "Chatlog" value={inputNameChatlog} type="text" name="ChatlogName" onChangeText={(text) => setNameChatlog(text)} />
   
-        <Text style={styles.label}>Password</Text>
+        <Text style={styles.label}>Password :</Text>
 
         <View style={styles.column}>
           <TouchableOpacity onPress={() => {setHasPasswordChatlog(!inputHasPasswordChatlog)}}>
-            <CustomCheckBox checkBoxActive={inputHasPasswordChatlog}>
+            <CustomCheckBox checkBoxActive={inputHasPasswordChatlog} value={isSelected} onValueChange={setSelection}>
               <CheckIcon>
                 <CheckIconWrapper>
                   <CheckIconVertical checkBoxActive={inputHasPasswordChatlog} />
@@ -54,15 +55,17 @@ const ChatlogCreate = (props) => {
               </CheckIcon>
             </CustomCheckBox>
           </TouchableOpacity>
-          <TextInput style={styles.input} label='' placeholderTextColor="#888" value={inputPasswordChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChangeText={(text) => setPasswordChatlog(text)} />
+          <TextInput style={styles.input,styles.password} label='' placeholderTextColor="#888" value={inputPasswordChatlog} secureTextEntry={true} password={true} name="ChatlogPassword" onChangeText={(text) => setPasswordChatlog(text)} />
         </View>
 
-        <Text style={styles.label}>Description</Text>
+        <Text style={styles.label}>Description :</Text>
         <TextInput style={styles.input} label='' placeholderTextColor="#888" value={inputDescriptionChatlog} type="text" name="ChatlogDescription"  onChangeText={(text) => setDescriptionChatlog(text)} />
-        <Text style={styles.label}>Color</Text>
+        <Text style={styles.label}>Color : {isSelected ? "ok" : "notok"}</Text>
         <TextInput style={styles.input} label='' placeholderTextColor="#888" placeholder = "#383FA5" value={inputColorChatlog} type="text" name="ChatlogColor" onChangeText={(text) => setColorChatlog(text)}/> 
         
-        <Button onPress={handleSubmit} title="Créer"></Button>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit} title="Créer">
+            <Text style={styles.creer}>Créer</Text>
+        </TouchableOpacity>
 
     </View>
   );
@@ -70,6 +73,7 @@ const ChatlogCreate = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    top:0,
     flex: 1,
     textAlign: "center",
     width: "100%"
@@ -88,13 +92,38 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   title:{
+    top:-20,
     fontSize: 28,
   },
   label:{
     fontSize: 16,
   },
+  creer:{
+    fontSize: 20,
+    color:"#fce3e1",
+    left:"20%",
+  },
   input:{
-    width: 280,
+    marginBottom:20,
+    borderRadius: 10,
+    width: "85%",
+    height: 40,
+    backgroundColor: "#fff",
+    fontSize: 16,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+  password:{
+    marginBottom:20,
+    borderRadius: 10,
+    width: "70%",
     height: 40,
     backgroundColor: "#fff",
     fontSize: 16,
@@ -118,6 +147,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#000",
     fontSize: 15
+  },
+  button:{
+    margin:10,
+    height:35,
+    elevation: 5,
+    backgroundColor: "#841584",
+    borderRadius: 25,
+    width:"30%",
+    left:"25%",
+    paddingHorizontal: 12
   },
 });
 
