@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
   messages: {
     textAlign: "center",
     width: "100%",
-    height: '80%',
+    height: 300,
   },
   messageSend: {
     textAlign: "center",
     width: "100%",
-    height: '20%',
+    height: 70,
   },
 });
 

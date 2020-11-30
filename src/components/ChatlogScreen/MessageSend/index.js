@@ -23,9 +23,9 @@ const MessageSend = (props) => {
     )}
 
   return (
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView style={styles.keybrd}>
 
-    <SafeAreaView style={styles.sendBar}>
+      <SafeAreaView style={styles.sendBar}>
 
         <TouchableOpacity style={styles.button} onPress={paramMenu}>
           <Icon name="cog" size={15} color="white"/>  
@@ -46,11 +46,12 @@ const MessageSend = (props) => {
 const styles = StyleSheet.create({
   sendBar:{
     padding:10,
-    marginTop:50,
     flex: 1, 
     flexDirection: 'row', 
     justifyContent: 'space-around',   
     backgroundColor:"#e8e8e8",
+    width:"100%",
+    height:70,
   },
   input:{
     width: '70%',
@@ -69,6 +70,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12
   },
+  keybrd:{
+    width:"100%",
+    height:70,
+  }
 })
 
 const mapStateToProps = (state) => { 

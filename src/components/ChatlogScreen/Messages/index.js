@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   message: {
     width: "100%",
     justifyContent: "center",
-    flexWrap: "nowrap"
+    flexWrap: "nowrap",
+    padding: 10,
   },
   messageText: {
     fontSize: 15,
