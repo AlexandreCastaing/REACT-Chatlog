@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Moment from 'moment'
 import { StyleSheet, Text, Button, TouchableOpacity, View, ScrollView } from 'react-native';
 import { getMessages } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
@@ -7,15 +8,13 @@ import { bindActionCreators } from "redux";
 const Messages = (props) => {
   const { chatlog, messages, getMessages } = props;
 
-
   if(!chatlog) return (<View style={styles.wrapper}></View>);
-
 
   useEffect(()=>{
 
     const getMessagesInterval = setInterval(() => {
       getMessages(chatlog);
-    }, 2500);
+    }, 4000);
 
     return () => {
       clearInterval(getMessagesInterval);
@@ -23,19 +22,19 @@ const Messages = (props) => {
   
   }, [messages]);
 
-  console.log(chatlog)
 
   if(messages && messages.length > 0){
     return ( 
-        <View style={styles.wrapper}>
+      <View style={styles.wrapper}>
         <ScrollView horizontal={false} style={styles.messages}>
-          {messages.map((message) => (      
+          {messages.map((message) => {     
+              let formattedDate = Moment(message.timestamp).format("lll");
               <View style={styles.message}>
-                <Text style={styles.date}> {message.timestamp} : </Text>
+                <Text style={styles.date}> {formattedDate} : </Text>
                 <Text style={styles.pseudo}> {message.pseudo} : </Text>
                 <Text style={styles.messageText}> {message.message}</Text>
               </View>
-          ))}
+          })}
         </ScrollView>
       
       </View>

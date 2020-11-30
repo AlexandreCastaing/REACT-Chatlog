@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 const ChatlogCreate = (props) => {
   
-  const {changeChatlogCreate, chatlogCreate, actuChatlogCreate, setChatlogCreate, user, navigation } = props;
+  const {chatlogCreate, setChatlogCreate, user, navigation } = props;
   
 
   const chatlogCreateJson = chatlogCreate.chatlogCreate;
