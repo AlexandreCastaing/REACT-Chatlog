@@ -76,22 +76,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%"
   },
-  buttonWrapper: {
-    position: "absolute",
-    bottom: 50,
-    right: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonOverlay: {
-    backgroundColor: "white",
-    width: 45,
-    height: 45,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 50,
-    marginVertical: 10,
-  }
 });
 
 const mapStateToProps = (state) => ({
