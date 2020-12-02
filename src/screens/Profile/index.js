@@ -18,11 +18,7 @@ const Profile = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.button}>
-        <Button
-          title={ user.loggedIn ? "Se déconnecter" : "Se connecter" }
-          onPress={_toggleStatus}
-          color="#00aad2"
-        />
+        <Button title={ user.loggedIn ? "Se déconnecter" : "Se connecter" } onPress={_toggleStatus} color="#841584"/>
       </View>
     </View>
   );
@@ -38,7 +34,6 @@ const styles = StyleSheet.create({
     width: 200,
     paddingVertical: 8,
     paddingHorizontal: 14,
-    backgroundColor: '#00aad2',
     borderRadius: 10,
   }
 });
