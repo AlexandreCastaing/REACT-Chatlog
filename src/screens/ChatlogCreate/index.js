@@ -72,12 +72,6 @@ const ChatlogCreate = (props) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    top:0,
-    flex: 1,
-    textAlign: "center",
-    width: "100%"
-  },
   column:{
     flexWrap: 'wrap', 
     alignItems: 'flex-start',
@@ -101,7 +95,8 @@ const styles = StyleSheet.create({
   creer:{
     fontSize: 20,
     color:"#fce3e1",
-    left:"20%",
+    left:"22%",
+    top:"10%",
   },
   input:{
     marginBottom:20,
@@ -137,21 +132,10 @@ const styles = StyleSheet.create({
 
     elevation: 5,
   },
-  chatlogName:{
-    textAlign: "center",
-    color: "#000",
-    fontWeight: "bold",
-    fontSize: 24
-  },
-  chatlogDesc:{
-    textAlign: "center",
-    color: "#000",
-    fontSize: 15
-  },
   button:{
     margin:10,
     height:35,
-    elevation: 5,
+    elevation: 10,
     backgroundColor: "#841584",
     borderRadius: 25,
     width:"30%",
