@@ -53,8 +53,10 @@ const styles = StyleSheet.create({
   message: {
     width: "100%",
     justifyContent: "center",
-    flexWrap: "nowrap",
     padding: 10,
+    borderWidth:5,
+    borderColor:"#9c8c8c",
+    backgroundColor:"#fafafa",
   },
   messageText: {
     fontSize: 15,
