@@ -93,7 +93,7 @@ const StackNavigation = (props) => {
           headerTitle: null,
           headerLeft: () => (
             <TouchableOpacity
-              onPress={() => navigation.toggleDrawer()}
+              onPress={() => navigation.navigate('Profile')}
               style={styles.userHeader}
             >
               <Image
