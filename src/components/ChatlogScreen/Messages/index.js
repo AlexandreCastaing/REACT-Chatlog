@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import { Date } from 'prismic-reactjs';
-import Moment from 'moment'
-import { StyleSheet, Text, Button, TouchableOpacity, View, ScrollView } from 'react-native';
+import React, {useEffect} from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { getMessages } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Message from "@components/Message";
 
 const Messages = (props) => {
   const { chatlog, messages, getMessages } = props;
@@ -29,13 +28,8 @@ const Messages = (props) => {
       <View style={styles.wrapper}>
         <ScrollView horizontal={false} style={styles.messages}>
           {messages.map((message) => { 
-             const d = new Date(message.timestamp*1);
-             const formattedDate = Moment(d).format("lll");
-             return <View style={styles.message}>
-                <Text style={styles.date}> {formattedDate} : </Text>
-                <Text style={styles.pseudo}> {message.pseudo} : </Text>
-                <Text style={styles.messageText}> {message.message}</Text>
-              </View>
+            return <Message timestamp={message.timestamp} pseudo={message.pseudo} message={message.message} />
+             
         })}
         </ScrollView>
       
@@ -49,23 +43,6 @@ const Messages = (props) => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-  },
-  message: {
-    width: "100%",
-    justifyContent: "center",
-    padding: 10,
-    borderWidth:5,
-    borderColor:"#9c8c8c",
-    backgroundColor:"#fafafa",
-  },
-  messageText: {
-    fontSize: 15,
-  },
-  pseudo: {
-    fontSize: 18,
-  },
-  date: {
-    fontSize: 12,
   }
 })
 

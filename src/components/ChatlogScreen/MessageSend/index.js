@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, Button, TouchableOpacity, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, TouchableOpacity, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
 import { sendMessage } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import ChatlogOption from '@components/ChatlogScreen/ChatlogOption';
 
 const MessageSend = (props) => {
-  const { chatlog, navigation, user, sendMessage } = props;
+  const { chatlog, sendMessage } = props;
 
   const [message, setMessage] = useState(message)
 
@@ -15,21 +16,12 @@ const MessageSend = (props) => {
     setMessage("")
   }
 
-  const paramMenu = () => {
-    return(
-    <form>
-      <Text>ok</Text>
-    </form>
-    )}
-
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={styles.keybrd}>
 
       <KeyboardAvoidingView style={styles.sendBar}>
 
-        <TouchableOpacity style={styles.button} onPress={paramMenu}>
-          <Icon name="cog" size={15} color="white"/>  
-        </TouchableOpacity>
+        <ChatlogOption />
 
         <TextInput style={styles.input} placeholderTextColor="#888" placeholder = "Message..." value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
         
@@ -45,12 +37,13 @@ const MessageSend = (props) => {
 
 const styles = StyleSheet.create({
   sendBar:{
-    padding:20,
+    padding:10,
     flex: 1, 
     flexDirection: 'row', 
-    justifyContent: 'space-between',   
+    justifyContent: 'space-around',   
     backgroundColor:"#e8e8e8",
     width:"100%",
+    height:70,
   },
   input:{
     width: '70%',
@@ -58,7 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     fontSize: 16,
-    
     elevation: 5,
   },
   button:{
@@ -68,12 +60,16 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingVertical: 10,
     paddingHorizontal: 12
+  },
+  keybrd:{
+    width:"100%",
+    height:70,
   }
 })
 
 const mapStateToProps = (state) => { 
   return ({
-    sendMessage: sendMessage, // << test todo remove
+    sendMessage: sendMessage,
   }) 
 };
 
