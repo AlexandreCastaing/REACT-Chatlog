@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: 15,
     color: "#05f",
+    fontWeight: 'bold',
   },
   pseudo: {
     fontSize: 18,
