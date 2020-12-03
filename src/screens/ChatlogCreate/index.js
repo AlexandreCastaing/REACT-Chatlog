@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   title:{
-    top:-20,
     fontSize: 28,
   },
   label:{
