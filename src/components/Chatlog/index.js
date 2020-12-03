@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
     flexWrap: "nowrap",
     borderColor:"#fafafa",
     borderWidth:5,
-    borderRadius:15,
+    borderLeftWidth:10,
+    borderRightWidth:10,
+    borderRadius:25,
   },
   chatlogName:{
     textAlign: "center",
