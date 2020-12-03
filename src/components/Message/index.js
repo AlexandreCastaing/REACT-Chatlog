@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { Date } from 'prismic-reactjs';
 import Moment from 'moment'
 
@@ -10,13 +10,10 @@ const Message = (props) => {
   const formattedDate = Moment(d).format("lll");
 
   return ( 
-    <View>
-          
-          return <View style={styles.message}>
-            <Text style={styles.date}> {formattedDate} : </Text>
-            <Text style={styles.pseudo}> {pseudo} : </Text>
-            <Text style={styles.messageText}> {message}</Text>
-          </View>
+    <View style={styles.message}>
+      <Text style={styles.date}> {formattedDate} : </Text>
+      <Text style={styles.pseudo}> {pseudo} : </Text>
+      <Text style={styles.messageText}> {message}</Text>
     </View>
   )
 }
