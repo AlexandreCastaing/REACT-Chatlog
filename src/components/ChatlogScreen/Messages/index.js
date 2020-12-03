@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { getMessages } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -22,7 +22,6 @@ const Messages = (props) => {
   
   }, [messages]);
 
-
   if(messages && messages.length > 0){
     return ( 
       <View style={styles.wrapper}>
@@ -33,6 +32,13 @@ const Messages = (props) => {
         })}
         </ScrollView>
       
+      </View>
+    )
+  }
+  if(messages && messages.length == 0){
+    return ( 
+      <View style={styles.wrapper}>
+        <Text>... no message here !</Text>
       </View>
     )
   }
