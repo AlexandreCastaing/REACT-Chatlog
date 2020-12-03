@@ -63,6 +63,7 @@ import Chatlog from '@components/Chatlog';
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor:"#ffffff",
   },
   chatlogs: {
     textAlign: "center",
