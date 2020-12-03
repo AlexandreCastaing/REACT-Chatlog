@@ -1,5 +1,4 @@
 import chatlogScreenActions from "./constants";
-import store from "@redux";
 import API from "@lib/API";
 
 export function sendMessage(chatlog, message) {

@@ -49,19 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({
-  chatlogsJson: state.chatlogs.chatlogsJson,
-  user: state.user,
-  pressChatlog: pressChatlog, // << test todo remove
-});
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      pressChatlog,
-      loadChatlogs,
-    },
-    dispatch
-);
-
 export default ChatlogScreen;

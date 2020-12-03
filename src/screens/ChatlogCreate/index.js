@@ -1,5 +1,5 @@
-import React , {useState, useEffect, Component} from "react";
-import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity } from "react-native";
+import React , {useState} from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { actuChatlogCreate, setChatlogCreate } from "@redux/chatlogCreate/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";

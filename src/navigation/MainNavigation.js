@@ -6,7 +6,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import Chatlogs from "@screens/Chatlogs";
 import ChatlogScreen from "@screens/ChatlogScreen";
 import ChatlogCreate from "@screens/ChatlogCreate";
