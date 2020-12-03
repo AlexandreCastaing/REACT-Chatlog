@@ -21,6 +21,7 @@ const TabsNavigation = () => (
   <Tabs.Navigator
     initialRouteName="ChatlogsList"
     tabBarOptions={{
+      keyboardHidesTabBar: true,
       activeBackgroundColor: "#fff",
       inactiveBackgroundColor: "#ddd",
       showLabel: true,
