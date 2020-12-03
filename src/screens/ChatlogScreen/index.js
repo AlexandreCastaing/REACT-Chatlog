@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     height: "86%",
   },
   messageSend: {
+    backgroundColor:"#fafafa",
     textAlign: "center",
     width: "100%",
     height: 70,
