@@ -25,9 +25,7 @@ const MessageSend = (props) => {
   return (
     <SafeAreaView style={{flex:1}}>
 
-      <KeyboardAvoidingView style={styles.sendBar} 
-        behavior={Platform.OS === 'ios' ? 'padding' : null}
-        keyboardVerticalOffset={400}>
+      <KeyboardAvoidingView style={styles.sendBar}>
 
         <TouchableOpacity style={styles.button} onPress={paramMenu}>
           <Icon name="cog" size={15} color="white"/>  
@@ -47,7 +45,6 @@ const MessageSend = (props) => {
 
 const styles = StyleSheet.create({
   sendBar:{
-    marginBottom:400,
     padding:20,
     flex: 1, 
     flexDirection: 'row', 
