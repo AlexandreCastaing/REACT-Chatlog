@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     top:"10%",
   },
   input:{
-    marginBottom:20,
+    marginBottom:"10%",
     borderRadius: 10,
     width: "85%",
     height: 40,
