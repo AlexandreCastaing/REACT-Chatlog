@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   message: {
+    justifyContent: "center",
+    flexWrap: "nowrap",
+    borderColor:"#525252",
+    borderWidth:10,
     width: "100%",
     justifyContent: "center",
     flexWrap: "nowrap",
