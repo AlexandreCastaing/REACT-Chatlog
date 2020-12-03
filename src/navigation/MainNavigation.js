@@ -145,7 +145,10 @@ const StackProfileNavigation = (props) => {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <Text style={styles.title}>CHATLOG</Text>
+            <TouchableOpacity
+            onPress={() => navigation.navigate('Home')}>
+              <Text style={styles.title}>CHATLOG</Text>
+            </TouchableOpacity>
           ),
           headerStyle: {
             backgroundColor: '#fff',
