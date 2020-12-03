@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, Button, TouchableOpacity, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, TouchableOpacity, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
 import { sendMessage } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import ChatlogOption from '@components/ChatlogScreen/ChatlogOption';
 
 const MessageSend = (props) => {
   const { chatlog, sendMessage } = props;
@@ -15,21 +16,12 @@ const MessageSend = (props) => {
     setMessage("")
   }
 
-  const paramMenu = () => {
-    return(
-    <form>
-      <Text>ok</Text>
-    </form>
-    )}
-
   return (
     <KeyboardAvoidingView style={styles.keybrd}>
 
       <SafeAreaView style={styles.sendBar}>
 
-        <TouchableOpacity style={styles.button} onPress={paramMenu}>
-          <Icon name="cog" size={15} color="white"/>  
-        </TouchableOpacity>
+        <ChatlogOption />
 
         <TextInput style={styles.input} placeholderTextColor="#888" placeholder = "Message..." value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
         
@@ -59,7 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     fontSize: 16,
-    
     elevation: 5,
   },
   button:{
