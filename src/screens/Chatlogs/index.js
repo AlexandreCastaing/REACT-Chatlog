@@ -1,23 +1,15 @@
 import React, { useEffect} from 'react';
-import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { pressChatlog, loadChatlogs } from "@redux/chatlogs/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Chatlog from '@components/Chatlog';
 
  const Chatlogs =  (props) => {
-    let { route, pressChatlog, loadChatlogs, chatlogsJson, user, navigation } = props;
-  
-  //if(loadChatlogs!=undefined)
+  const { loadChatlogs, chatlogsJson, user, navigation } = props;
 
-  let chatlogs= chatlogsJson;
+  const chatlogs= chatlogsJson;
   
-  /*
-  useEffect(()=>{
-    loadChatlogs();
-  }, [chatlogs]);
-  */
-
   useEffect(()=>{
 
     const getMessagesInterval = setInterval(() => {
