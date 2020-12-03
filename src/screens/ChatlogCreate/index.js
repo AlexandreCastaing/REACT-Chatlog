@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   title:{
-    top:0,
+    top:-20,
     fontSize: 28,
   },
   label:{
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
     top:"10%",
   },
   input:{
-    marginBottom:"10%",
+    marginBottom:20,
     borderRadius: 10,
     width: "85%",
-    height: '8%',
+    height: 40,
     backgroundColor: "#fff",
     fontSize: 16,
     shadowColor: "#000",
@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   password:{
-    marginBottom:"10%",
+    marginBottom:20,
     borderRadius: 10,
     width: "70%",
-    height: '63%',
+    height: 40,
     backgroundColor: "#fff",
     fontSize: 16,
     shadowColor: "#000",
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   button:{
     margin:10,
-    height:"7%",
+    height:35,
     elevation: 10,
     backgroundColor: "#841584",
     borderRadius: 25,
