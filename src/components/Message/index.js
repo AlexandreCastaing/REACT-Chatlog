@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexWrap: "nowrap",
     padding: 10,
+    backgroundColor: "#A8DDFD",
   },
   messageText: {
     fontSize: 15,
