@@ -29,11 +29,6 @@ const styles = StyleSheet.create({
   chatlog: {
     width: "100%",
     height: 85,
-    justifyContent: "center",
-    flexWrap: "nowrap",
-    borderColor:"#fafafa",
-    borderWidth:5,
-    borderRadius:15,
   },
   chatlogName:{
     textAlign: "center",
