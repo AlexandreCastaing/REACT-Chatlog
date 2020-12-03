@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     flexDirection: 'row', 
     justifyContent: 'space-around',   
-    backgroundColor:"#e8e8e8",
+    backgroundColor:"#b3b3b3",
     width:"100%",
     height:1000,
   },
