@@ -4,6 +4,7 @@ import { actuChatlogCreate, setChatlogCreate } from "@redux/chatlogCreate/action
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import styled from 'styled-components'
+import { ScrollView } from "react-native-gesture-handler";
 
 const ChatlogCreate = (props) => {
   
@@ -35,7 +36,7 @@ const ChatlogCreate = (props) => {
   }
   
   return (
-    <View style={styles.chatlog_Create_Container}>
+    <ScrollView style={styles.chatlog_Create_Container}>
 
         <Text style={styles.title}>Making New Chatlog :</Text>
         
@@ -67,7 +68,7 @@ const ChatlogCreate = (props) => {
             <Text style={styles.creer}>Créer</Text>
         </TouchableOpacity>
 
-    </View>
+    </ScrollView>
   );
 }
 
@@ -80,7 +81,6 @@ const styles = StyleSheet.create({
   chatlog_Create_Container: {
     width: "100%",
     height: "100%",
-    justifyContent: "center",
     flexWrap: "nowrap",
     textAlign: "center",
     width: "100%"
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
     top:"10%",
   },
   input:{
-    marginBottom:"10%",
+    marginBottom:"5%",
     borderRadius: 10,
     width: "85%",
-    height: '8%',
+    height: 35,
     backgroundColor: "#fff",
     fontSize: 16,
     shadowColor: "#000",
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     marginBottom:"10%",
     borderRadius: 10,
     width: "70%",
-    height: '63%',
+    height: 35,
     backgroundColor: "#fff",
     fontSize: 16,
     shadowColor: "#000",
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   button:{
     margin:10,
-    height:"7%",
+    height:35,
     elevation: 10,
     backgroundColor: "#841584",
     borderRadius: 25,
