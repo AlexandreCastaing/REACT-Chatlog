@@ -27,7 +27,7 @@ const Messages = (props) => {
       <View style={styles.wrapper}>
         <ScrollView horizontal={false} style={styles.messages}>
           {messages.map((message) => { 
-            return <Message timestamp={message.timestamp} pseudo={message.pseudo} message={message.message} />
+            return <Message timestamp={message.timestamp} pseudo={message.pseudo} message={message.message} style={styles.message} />
              
         })}
         </ScrollView>
@@ -49,7 +49,10 @@ const Messages = (props) => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-  }
+  },
+  message: {
+  
+  },
 })
 
 const mapStateToProps = (state) => ({
