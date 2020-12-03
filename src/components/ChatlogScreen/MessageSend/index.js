@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, Button, TouchableOpacity, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
 import { sendMessage } from "@redux/chatlogScreen/actions";
 import { connect } from "react-redux";
@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MessageSend = (props) => {
-  const { chatlog, navigation, user, sendMessage } = props;
+  const { chatlog, sendMessage } = props;
 
   const [message, setMessage] = useState(message)
 
@@ -23,11 +23,9 @@ const MessageSend = (props) => {
     )}
 
   return (
-    <SafeAreaView style={{flex:1}}>
+    <KeyboardAvoidingView style={styles.keybrd}>
 
-      <KeyboardAvoidingView style={styles.sendBar} 
-        behavior={Platform.OS === 'ios' ? 'padding' : null}
-        keyboardVerticalOffset={400}>
+      <SafeAreaView style={styles.sendBar}>
 
         <TouchableOpacity style={styles.button} onPress={paramMenu}>
           <Icon name="cog" size={15} color="white"/>  
@@ -39,21 +37,21 @@ const MessageSend = (props) => {
           <Icon name="angle-double-right" size={15} color="white"/>  
         </TouchableOpacity>
 
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
 
   )
 }
 
 const styles = StyleSheet.create({
   sendBar:{
-    marginBottom:400,
-    padding:20,
+    padding:10,
     flex: 1, 
     flexDirection: 'row', 
-    justifyContent: 'space-between',   
+    justifyContent: 'space-around',   
     backgroundColor:"#e8e8e8",
     width:"100%",
+    height:70,
   },
   input:{
     width: '70%',
@@ -71,12 +69,16 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingVertical: 10,
     paddingHorizontal: 12
+  },
+  keybrd:{
+    width:"100%",
+    height:70,
   }
 })
 
 const mapStateToProps = (state) => { 
   return ({
-    sendMessage: sendMessage, // << test todo remove
+    sendMessage: sendMessage,
   }) 
 };
 
