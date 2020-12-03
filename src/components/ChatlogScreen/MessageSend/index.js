@@ -21,7 +21,7 @@ const MessageSend = (props) => {
 
       <KeyboardAvoidingView style={styles.sendBar}>
 
-        <ChatlogOption />
+        <ChatlogOption chatlog={chatlog} />
 
         <TextInput style={styles.input} placeholderTextColor="#888" placeholder = "Message..." value={message} type="text" name="ChatlogMessage" onChangeText={(text) => setMessage(text)} />
         
