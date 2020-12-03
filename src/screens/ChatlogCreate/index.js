@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   title:{
-    top:0,
+    top:-20,
     fontSize: 28,
   },
   label:{
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     top:"10%",
   },
   input:{
-    marginBottom:"5%",
+    marginBottom:"2%",
     borderRadius: 10,
     width: "85%",
     height: 35,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   password:{
-    marginBottom:"10%",
+    marginBottom:20,
     borderRadius: 10,
     width: "70%",
     height: 35,
