@@ -37,13 +37,15 @@ const MessageSend = (props) => {
 
 const styles = StyleSheet.create({
   sendBar:{
+    position:"absolute",
     padding:10,
+    top:-15,
     flex: 1, 
     flexDirection: 'row', 
     justifyContent: 'space-around',   
-    backgroundColor:"#e8e8e8",
+    backgroundColor:"#b3b3b3",
     width:"100%",
-    height:70,
+    height:1000,
   },
   input:{
     width: '70%',
